@@ -2717,6 +2717,272 @@ main table td,
   color: #000 !important;
   background: #fff !important;
 }
+
+
+/* v26 mobile/tablet footnote modal */
+.note-backdrop {
+  display: none;
+}
+
+.note-popover {
+  display: none;
+}
+
+/* 모바일/태블릿에서는 각주를 중앙 모달로 표시 */
+@media (max-width: 1024px) {
+  body.note-open {
+    overflow: hidden;
+  }
+
+  .note-backdrop {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 9998;
+    background: rgba(0, 0, 0, .48);
+  }
+
+  .note-backdrop.show {
+    display: block;
+  }
+
+  .note-popover {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: min(calc(100vw - 28px), 760px);
+    max-height: min(72vh, 520px);
+    display: none;
+    background: #fff;
+    color: #111;
+    border: 1px solid #d6dbe3;
+    border-radius: 6px;
+    box-shadow: 0 18px 42px rgba(0,0,0,.28);
+    overflow: hidden;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .note-popover.show {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .note-popover .note-content {
+    padding: 24px 28px 24px;
+    overflow: auto;
+  }
+
+  .note-popover .pop-title {
+    display: inline;
+    color: var(--link);
+    font-weight: 700;
+    margin-right: 6px;
+    white-space: nowrap;
+  }
+
+  .note-popover .pop-body {
+    color: #222;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .note-popover .pop-close {
+    display: block;
+    width: 100%;
+    min-height: 54px;
+    padding: 13px 16px;
+    border: 0;
+    border-top: 1px solid #e2e5ea;
+    background: #fafafa;
+    color: #222;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .note-popover .pop-close:active {
+    background: #f0f0f0;
+  }
+
+  .note-popover.ghost .pop-body {
+    color: #e8e9ec;
+    text-decoration: line-through;
+    text-decoration-color: #eeeeee;
+  }
+}
+
+/* 아주 작은 모바일에서 여백 조정 */
+@media (max-width: 520px) {
+  .note-popover {
+    width: calc(100vw - 18px);
+    font-size: .96rem;
+    border-radius: 5px;
+  }
+
+  .note-popover .note-content {
+    padding: 22px 22px 22px;
+  }
+
+  .note-popover .pop-close {
+    min-height: 52px;
+  }
+}
+
+
+/* v27: PC 각주 이동 유지, 모바일/터치에서만 나무위키식 모달 */
+.note-backdrop {
+  display: none;
+}
+
+.note-popover {
+  display: none;
+}
+
+/* PC에서는 팝업 자체를 숨김 */
+@media (hover: hover) and (pointer: fine) and (min-width: 761px) {
+  .note-backdrop,
+  .note-popover,
+  .note-popover.show,
+  .note-backdrop.show {
+    display: none !important;
+  }
+}
+
+/* 모바일/태블릿 팝업 */
+@media (max-width: 760px), (hover: none) and (pointer: coarse) {
+  body.note-open {
+    overflow: hidden;
+  }
+
+  .note-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    display: none !important;
+    z-index: 9998 !important;
+    background: rgba(0, 0, 0, .48) !important;
+  }
+
+  .note-backdrop.show {
+    display: block !important;
+  }
+
+  .note-popover {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    width: min(calc(100vw - 28px), 760px) !important;
+    max-height: min(72vh, 520px) !important;
+    display: none !important;
+    flex-direction: column !important;
+    background: #fff !important;
+    color: #111 !important;
+    border: 1px solid #d6dbe3 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 18px 42px rgba(0,0,0,.28) !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    font-size: 1rem !important;
+    line-height: 1.72 !important;
+    text-decoration: none !important;
+  }
+
+  .note-popover.show {
+    display: flex !important;
+  }
+
+  .note-popover .note-content {
+    order: 1 !important;
+    display: block !important;
+    padding: 24px 28px 24px !important;
+    overflow: auto !important;
+    text-align: left !important;
+    background: #fff !important;
+  }
+
+  .note-popover .pop-title {
+    display: inline !important;
+    position: static !important;
+    color: var(--link) !important;
+    font-weight: 700 !important;
+    margin: 0 6px 0 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .note-popover .pop-body {
+    display: inline !important;
+    position: static !important;
+    color: #222 !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .note-popover .pop-close {
+    order: 2 !important;
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    min-height: 54px !important;
+    padding: 13px 16px !important;
+    border: 0 !important;
+    border-top: 1px solid #e2e5ea !important;
+    background: #fafafa !important;
+    color: #222 !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+  }
+
+  .note-popover .pop-close:active {
+    background: #f0f0f0 !important;
+  }
+
+  .note-popover.ghost .pop-body {
+    color: #e8e9ec !important;
+    text-decoration: line-through !important;
+    text-decoration-color: #eeeeee !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .note-popover {
+    width: calc(100vw - 18px) !important;
+    font-size: .96rem !important;
+    border-radius: 5px !important;
+  }
+
+  .note-popover .note-content {
+    padding: 22px 22px 22px !important;
+  }
+
+  .note-popover .pop-close {
+    min-height: 52px !important;
+  }
+}
+
+
+/* v28 font stack */
+body,
+button,
+input,
+textarea,
+select,
+table {
+  font-family: "Pretendard JP", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans CJK KR", "NanumBarunGothic", Roboto, "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif, emoji !important;
+}
 </style>
 </head>
 <body>
@@ -3268,36 +3534,7 @@ main table td,
 </footer>
 </main>
 </article><div aria-label="빠른 이동" class="quick-nav"><a aria-label="목차로 이동" class="qbtn qbtn-menu" href="#toc" title="목차로 이동">☰</a><div class="qbtn-stack"><a aria-label="맨 위로" class="qbtn qbtn-arrow" href="#page-top" title="맨 위로">↑</a><a aria-label="맨 아래로" class="qbtn qbtn-arrow" href="#page-end" title="맨 아래로">↓</a></div></div>
-<div aria-live="polite" class="note-popover" id="note-popover" role="dialog">
-<button aria-label="닫기" class="pop-close" type="button">×</button>
-<span class="pop-title"></span>
-<span class="pop-body"></span>
-</div>
-<script>
-    (function(){
-      const pop=document.getElementById('note-popover');
-      const title=pop.querySelector('.pop-title');
-      const body=pop.querySelector('.pop-body');
-      const close=pop.querySelector('.pop-close');
-      const mq=window.matchMedia('(max-width: 720px)');
-      document.addEventListener('click', function(e){
-        const ref=e.target.closest('.note-ref');
-        if(ref && mq.matches){
-          e.preventDefault();
-          title.textContent='['+ref.dataset.noteNo+']';
-          body.textContent=ref.dataset.note || '';
-          pop.classList.toggle('ghost', ref.dataset.noteNo==='3');
-          pop.classList.add('show');
-          return;
-        }
-        if(!e.target.closest('#note-popover') && !e.target.closest('.note-ref')){
-          pop.classList.remove('show');
-        }
-      });
-      close.addEventListener('click', function(){ pop.classList.remove('show'); });
-      window.addEventListener('resize', function(){ if(!mq.matches) pop.classList.remove('show'); });
-    })();
-    </script>
+<div class="note-backdrop" id="note-backdrop"></div><div aria-live="polite" class="note-popover" id="note-popover" role="dialog"><div class="note-content"><span class="pop-title"></span><span class="pop-body"></span></div><button aria-label="닫기" class="pop-close" type="button">닫기</button></div>
 <script>
 (function () {
   function headingLevel(el) {
@@ -3345,6 +3582,67 @@ main table td,
     link.addEventListener('click', function (event) {
       event.stopPropagation();
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  const pop = document.getElementById('note-popover');
+  const backdrop = document.getElementById('note-backdrop');
+  if (!pop || !backdrop) return;
+
+  const title = pop.querySelector('.pop-title');
+  const body = pop.querySelector('.pop-body');
+  const close = pop.querySelector('.pop-close');
+
+  function shouldUseModal() {
+    const smallScreen = window.matchMedia('(max-width: 760px)').matches;
+    const touchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const tabletPortrait = window.matchMedia('(max-width: 900px) and (hover: none)').matches;
+    return smallScreen || touchDevice || tabletPortrait;
+  }
+
+  function openNote(ref) {
+    title.textContent = '[' + ref.dataset.noteNo + '] ';
+    body.textContent = ref.dataset.note || '';
+    pop.classList.toggle('ghost', ref.dataset.noteNo === '3');
+    backdrop.classList.add('show');
+    pop.classList.add('show');
+    document.body.classList.add('note-open');
+  }
+
+  function closeNote() {
+    pop.classList.remove('show');
+    backdrop.classList.remove('show');
+    document.body.classList.remove('note-open');
+  }
+
+  document.addEventListener('click', function(e){
+    const ref = e.target.closest('.note-ref');
+
+    if (ref) {
+      if (!shouldUseModal()) {
+        return;
+      }
+      e.preventDefault();
+      e.stopPropagation();
+      openNote(ref);
+      return;
+    }
+
+    if (e.target === backdrop) {
+      closeNote();
+    }
+  });
+
+  close.addEventListener('click', closeNote);
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeNote();
+  });
+
+  window.addEventListener('resize', function(){
+    if (!shouldUseModal()) closeNote();
   });
 })();
 </script>
