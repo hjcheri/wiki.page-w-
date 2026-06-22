@@ -2983,90 +2983,282 @@ select,
 table {
   font-family: "Pretendard JP", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans CJK KR", "NanumBarunGothic", Roboto, "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif, emoji !important;
 }
+
+
+/* v29 requested fixes */
+
+/* 2. 데스크톱에서 환생원 표가 조금 더 잘 들어오게 비율 조정 */
+@media (min-width: 901px) {
+  .top-grid {
+    grid-template-columns: minmax(0, 0.9fr) 455px !important;
+    gap: 18px !important;
+  }
+}
+
+/* 3. 기본정보표 교표 셀 */
+.info-table .emblem-row td {
+  padding: 0 !important;
+  background: #fff !important;
+  border-left: 1px solid #2c3e5d !important;
+  border-right: 1px solid #2c3e5d !important;
+  border-top: 1px solid #2c3e5d !important;
+  border-bottom: 1px solid #2c3e5d !important;
+}
+
+.emblem-cell {
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 12px;
+  background: #fff;
+}
+
+.emblem-cell img {
+  width: min(160px, 54%);
+  max-height: 150px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 4. 최상단 박스 강조 색 수정 */
+.notice {
+  border-top-color: var(--main-navy) !important;
+}
+
+.notice strong {
+  color: #000 !important;
+  font-weight: 800 !important;
+}
+
+.notice .notice-accent {
+  color: var(--accent) !important;
+  font-weight: 800 !important;
+}
+
+/* 5. 목차 숫자만 링크색, 텍스트는 검정 */
+.toc a,
+.toc a:visited {
+  text-decoration: none !important;
+}
+
+.toc .toc-num {
+  color: var(--link) !important;
+  font-weight: 700 !important;
+}
+
+.toc .toc-text {
+  color: #000 !important;
+  font-weight: inherit !important;
+}
+
+.toc a:hover .toc-text,
+.toc a:hover .toc-num {
+  text-decoration: underline !important;
+}
+
+/* 6. 각주 3번: 아주 약간만 더 진하게 */
+.strike-ghost {
+  color: #d7d9de !important;
+  text-decoration-color: #d7d9de !important;
+}
+
+.note-popover.ghost .pop-body {
+  color: #d7d9de !important;
+  text-decoration-color: #d7d9de !important;
+}
+
+/* 7. 펼치기/접기 표시를 군청색으로 */
+.fold-arrow,
+.sub-fold-arrow {
+  border-right-color: var(--main-navy) !important;
+  border-bottom-color: var(--main-navy) !important;
+}
+
+.minor-fold > summary,
+.minor-fold > summary strong {
+  color: var(--main-navy) !important;
+}
+
+/* 8. 빠른 이동 버튼: 목차 지나기 전 숨김, 이후 흐리게 표시 */
+.quick-nav {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity .18s ease !important;
+}
+
+.quick-nav.is-visible {
+  opacity: .34 !important;
+  pointer-events: auto !important;
+}
+
+.quick-nav.is-visible:hover,
+.quick-nav.is-visible:focus-within {
+  opacity: 1 !important;
+}
+
+.qbtn,
+.qbtn-stack {
+  border-radius: 4px !important;
+  overflow: hidden !important;
+}
+
+.qbtn {
+  background: #f5f5f5 !important;
+}
+
+.qbtn-stack {
+  background: #f5f5f5 !important;
+  gap: 0 !important;
+}
+
+.qbtn-stack .qbtn {
+  border-radius: 0 !important;
+}
+
+/* 9. 가로선 길이 통일 */
+.title-block,
+.top-grid,
+.section-fold,
+.section-fold > summary,
+h3,
+.footnotes,
+.footer-license::before,
+.toc-title {
+  width: 100% !important;
+}
+
+.section-fold,
+.footnotes,
+.footer-license {
+  clear: both !important;
+}
+
+@media (max-width: 720px) {
+  .emblem-cell {
+    min-height: 112px;
+    padding: 14px 10px;
+  }
+
+  .emblem-cell img {
+    width: min(150px, 58%);
+    max-height: 132px;
+  }
+}
+
+
+/* v30: 비공식 모임 모임별 점 목록 확정 */
+.group-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 14px 0 22px !important;
+}
+
+.group-list li {
+  position: relative !important;
+  padding-left: 18px !important;
+  margin: 11px 0 !important;
+  line-height: 1.78 !important;
+  color: #000 !important;
+}
+
+.group-list li::before {
+  content: "•" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  color: #000 !important;
+  font-weight: 400 !important;
+}
+
+.group-list li strong {
+  color: #000 !important;
+  font-weight: 800 !important;
+}
 </style>
 </head>
 <body>
 <article class="page" id="page-top">
 <header class="title-block">
 <h1>청년환생교육원</h1>
-<div class="sub modified-time">최근 수정 시각: 2026-07-12 14:44</div></header><div class="notice">본 문서는 <strong>청년환생교육원</strong> 커뮤니티의 세계관 정보 전달을 목적으로 제작된 <strong>설정 페이지</strong>입니다. <strong>필독 페이지가 아니며</strong>, 전부 읽지 않아도 러닝에 지장이 없음을 알립니다.</div>
+<div class="sub modified-time">최근 수정 시각: 2026-07-12 14:44</div></header><div class="notice">본 문서는 <strong>청년환생교육원</strong> 커뮤니티의 세계관 정보 전달을 목적으로 제작된 <strong>설정 페이지</strong>입니다. <strong class="notice-accent">필독 페이지가 아니며</strong>, 전부 읽지 않아도 러닝에 지장이 없음을 알립니다.</div>
 <div class="top-grid">
 <nav class="toc" id="toc">
 <strong class="toc-title">목차</strong>
 <ol>
-<li class="lv1" id="toc-afterworld"><a href="#afterworld">1. 저승</a></li>
-<li class="lv2" id="toc-afterworld-system"><a href="#afterworld-system">1.1. 사후 행정 체계</a></li>
-<li class="lv2" id="toc-afterworld-life"><a href="#afterworld-life">1.2. 이승과 저승</a></li>
-<li class="lv2" id="toc-afterworld-time"><a href="#afterworld-time">1.3. 저승시(冥界時)</a></li>
-<li class="lv2" id="toc-afterworld-zone"><a href="#afterworld-zone">1.4. 저승 생활권</a></li>
-<li class="lv2" id="toc-afterworld-grace"><a href="#afterworld-grace">1.5. 유예구역</a></li>
-<li class="lv2" id="toc-afterworld-deathqi"><a href="#afterworld-deathqi">1.6. 사기(死氣)</a></li>
-<li class="lv1" id="toc-overview"><a href="#overview">2. 개요</a></li>
-<li class="lv1" id="toc-history"><a href="#history">3. 연혁</a></li>
-<li class="lv2" id="toc-history-before"><a href="#history-before">3.1. 설립 이전</a></li>
-<li class="lv2" id="toc-history-after"><a href="#history-after">3.2. 설립 이후</a></li>
-<li class="lv2" id="toc-history-now"><a href="#history-now">3.3. 현재</a></li>
-<li class="lv1" id="toc-symbols"><a href="#symbols">4. 상징 및 복장</a></li>
-<li class="lv2" id="toc-symbol-emblem"><a href="#symbol-emblem">4.1. 교표와 상징물</a></li>
-<li class="lv2" id="toc-symbol-motto"><a href="#symbol-motto">4.2. 교훈과 슬로건</a></li>
-<li class="lv2" id="toc-symbol-uniform"><a href="#symbol-uniform">4.3. 원복</a></li>
-<li class="lv2" id="toc-symbol-kka"><a href="#symbol-kka">4.4. 까돌이</a></li>
-<li class="lv1" id="toc-curriculum"><a href="#curriculum">5. 학사 과정 및 진로</a></li>
-<li class="lv2" id="toc-curriculum-basic"><a href="#curriculum-basic">5.1. 기본 교육과정</a></li>
-<li class="lv2" id="toc-curriculum-eval"><a href="#curriculum-eval">5.2. 환생 적합도 평가</a></li>
-<li class="lv3" id="toc-curriculum-eval-period"><a href="#curriculum-eval-period">5.2.1. 평가기간</a></li>
-<li class="lv3" id="toc-curriculum-retake"><a href="#curriculum-retake">5.2.2. 재이수</a></li>
-<li class="lv2" id="toc-curriculum-public"><a href="#curriculum-public">5.3. 저승 공무직 테크</a></li>
-<li class="lv2" id="toc-curriculum-drop"><a href="#curriculum-drop">5.4. 중도 포기와 퇴학</a></li>
-<li class="lv1" id="toc-facilities"><a href="#facilities">6. 시설</a></li>
-<li class="lv2" id="toc-facility-layout"><a href="#facility-layout">6.1. 부지 구조</a></li>
-<li class="lv3" id="toc-facility-dome"><a href="#facility-dome">6.1.1. 돔</a></li>
-<li class="lv3" id="toc-facility-zone"><a href="#facility-zone">6.1.2. 구역 구분</a></li>
-<li class="lv2" id="toc-facility-edu"><a href="#facility-edu">6.2. 교육 및 행정 시설</a></li>
-<li class="lv3" id="toc-facility-admin"><a href="#facility-admin">6.2.1. 환생행정관</a></li>
-<li class="lv3" id="toc-facility-library"><a href="#facility-library">6.2.2. 도서관</a></li>
-<li class="lv3" id="toc-facility-hall"><a href="#facility-hall">6.2.3. 강당</a></li>
-<li class="lv3" id="toc-facility-gym"><a href="#facility-gym">6.2.4. 체육관</a></li>
-<li class="lv2" id="toc-facility-record"><a href="#facility-record">6.3. 기록 시설</a></li>
-<li class="lv3" id="toc-facility-register"><a href="#facility-register">6.3.1. 명부기록관</a></li>
-<li class="lv3" id="toc-facility-student-record"><a href="#facility-student-record">6.3.2. 학생자료 기록실</a></li>
-<li class="lv3" id="toc-facility-judgement"><a href="#facility-judgement">6.3.3. 심사기록실</a></li>
-<li class="lv2" id="toc-facility-life"><a href="#facility-life">6.4. 생활 및 편의 시설</a></li>
-<li class="lv3" id="toc-facility-dorm"><a href="#facility-dorm">6.4.1. 생활관</a></li>
-<li class="lv3" id="toc-facility-cafeteria"><a href="#facility-cafeteria">6.4.2. 학생식당</a></li>
-<li class="lv3" id="toc-facility-store"><a href="#facility-store">6.4.3. 매점</a></li>
-<li class="lv3" id="toc-facility-goods"><a href="#facility-goods">6.4.4. 기념품샵</a></li>
-<li class="lv2" id="toc-facility-support"><a href="#facility-support">6.5. 상담 및 지원 시설</a></li>
-<li class="lv3" id="toc-facility-counsel"><a href="#facility-counsel">6.5.1. 상담지원센터</a></li>
-<li class="lv2" id="toc-facility-outdoor"><a href="#facility-outdoor">6.6. 야외 및 외곽 시설</a></li>
-<li class="lv3" id="toc-facility-courtyard"><a href="#facility-courtyard">6.6.1. 중정</a></li>
-<li class="lv3" id="toc-facility-hill"><a href="#facility-hill">6.6.2. 유계정</a></li>
-<li class="lv3" id="toc-facility-maintenance"><a href="#facility-maintenance">6.6.3. 돔 정비구역</a></li>
-<li class="lv2" id="toc-facility-limited"><a href="#facility-limited">6.7. 제한 시설</a></li>
-<li class="lv3" id="toc-facility-chasa"><a href="#facility-chasa">6.7.1. 차사연수동</a></li>
-<li class="lv1" id="toc-systems"><a href="#systems">7. 원내 시스템</a></li>
-<li class="lv2" id="toc-system-id"><a href="#system-id">7.1. 원생 전용 명패</a></li>
-<li class="lv2" id="toc-system-point"><a href="#system-point">7.2. 포인트와 상품권</a></li>
-<li class="lv2" id="toc-system-campus"><a href="#system-campus">7.3. 사이버 캠퍼스</a></li>
-<li class="lv2" id="toc-system-ai"><a href="#system-ai">7.4. 까돌이 AI</a></li>
-<li class="lv1" id="toc-life"><a href="#life">8. 생활</a></li>
-<li class="lv2" id="toc-life-day"><a href="#life-day">8.1. 일과</a></li>
-<li class="lv2" id="toc-life-dorm"><a href="#life-dorm">8.2. 기숙사 생활</a></li>
-<li class="lv2" id="toc-life-culture"><a href="#life-culture">8.3. 원생 문화</a></li>
-<li class="lv2" id="toc-life-groups"><a href="#life-groups">8.4. 비공식 모임</a></li>
-<li class="lv1" id="toc-operation"><a href="#operation">9. 운영</a></li>
-<li class="lv2" id="toc-operation-org"><a href="#operation-org">9.1. 조직</a></li>
-<li class="lv2" id="toc-operation-chasa"><a href="#operation-chasa">9.2. 차사</a></li>
-<li class="lv2" id="toc-operation-record"><a href="#operation-record">9.3. 기록 관리</a></li>
-<li class="lv2" id="toc-operation-eval"><a href="#operation-eval">9.4. 평가기간 운영</a></li>
-<li class="lv1" id="toc-rumors"><a href="#rumors">10. 여담</a></li>
-<li class="lv1" id="toc-etc"><a href="#etc">11. 기타</a></li>
+<li class="lv1" id="toc-afterworld"><a href="#afterworld"><span class="toc-num">1.</span><span class="toc-text"> 저승</span></a></li>
+<li class="lv2" id="toc-afterworld-system"><a href="#afterworld-system"><span class="toc-num">1.1.</span><span class="toc-text"> 사후 행정 체계</span></a></li>
+<li class="lv2" id="toc-afterworld-life"><a href="#afterworld-life"><span class="toc-num">1.2.</span><span class="toc-text"> 이승과 저승</span></a></li>
+<li class="lv2" id="toc-afterworld-time"><a href="#afterworld-time"><span class="toc-num">1.3.</span><span class="toc-text"> 저승시(冥界時)</span></a></li>
+<li class="lv2" id="toc-afterworld-zone"><a href="#afterworld-zone"><span class="toc-num">1.4.</span><span class="toc-text"> 저승 생활권</span></a></li>
+<li class="lv2" id="toc-afterworld-grace"><a href="#afterworld-grace"><span class="toc-num">1.5.</span><span class="toc-text"> 유예구역</span></a></li>
+<li class="lv2" id="toc-afterworld-deathqi"><a href="#afterworld-deathqi"><span class="toc-num">1.6.</span><span class="toc-text"> 사기(死氣)</span></a></li>
+<li class="lv1" id="toc-overview"><a href="#overview"><span class="toc-num">2.</span><span class="toc-text"> 개요</span></a></li>
+<li class="lv1" id="toc-history"><a href="#history"><span class="toc-num">3.</span><span class="toc-text"> 연혁</span></a></li>
+<li class="lv2" id="toc-history-before"><a href="#history-before"><span class="toc-num">3.1.</span><span class="toc-text"> 설립 이전</span></a></li>
+<li class="lv2" id="toc-history-after"><a href="#history-after"><span class="toc-num">3.2.</span><span class="toc-text"> 설립 이후</span></a></li>
+<li class="lv2" id="toc-history-now"><a href="#history-now"><span class="toc-num">3.3.</span><span class="toc-text"> 현재</span></a></li>
+<li class="lv1" id="toc-symbols"><a href="#symbols"><span class="toc-num">4.</span><span class="toc-text"> 상징 및 복장</span></a></li>
+<li class="lv2" id="toc-symbol-emblem"><a href="#symbol-emblem"><span class="toc-num">4.1.</span><span class="toc-text"> 교표와 상징물</span></a></li>
+<li class="lv2" id="toc-symbol-motto"><a href="#symbol-motto"><span class="toc-num">4.2.</span><span class="toc-text"> 교훈과 슬로건</span></a></li>
+<li class="lv2" id="toc-symbol-uniform"><a href="#symbol-uniform"><span class="toc-num">4.3.</span><span class="toc-text"> 원복</span></a></li>
+<li class="lv2" id="toc-symbol-kka"><a href="#symbol-kka"><span class="toc-num">4.4.</span><span class="toc-text"> 까돌이</span></a></li>
+<li class="lv1" id="toc-curriculum"><a href="#curriculum"><span class="toc-num">5.</span><span class="toc-text"> 학사 과정 및 진로</span></a></li>
+<li class="lv2" id="toc-curriculum-basic"><a href="#curriculum-basic"><span class="toc-num">5.1.</span><span class="toc-text"> 기본 교육과정</span></a></li>
+<li class="lv2" id="toc-curriculum-eval"><a href="#curriculum-eval"><span class="toc-num">5.2.</span><span class="toc-text"> 환생 적합도 평가</span></a></li>
+<li class="lv3" id="toc-curriculum-eval-period"><a href="#curriculum-eval-period"><span class="toc-num">5.2.1.</span><span class="toc-text"> 평가기간</span></a></li>
+<li class="lv3" id="toc-curriculum-retake"><a href="#curriculum-retake"><span class="toc-num">5.2.2.</span><span class="toc-text"> 재이수</span></a></li>
+<li class="lv2" id="toc-curriculum-public"><a href="#curriculum-public"><span class="toc-num">5.3.</span><span class="toc-text"> 저승 공무직 테크</span></a></li>
+<li class="lv2" id="toc-curriculum-drop"><a href="#curriculum-drop"><span class="toc-num">5.4.</span><span class="toc-text"> 중도 포기와 퇴학</span></a></li>
+<li class="lv1" id="toc-facilities"><a href="#facilities"><span class="toc-num">6.</span><span class="toc-text"> 시설</span></a></li>
+<li class="lv2" id="toc-facility-layout"><a href="#facility-layout"><span class="toc-num">6.1.</span><span class="toc-text"> 부지 구조</span></a></li>
+<li class="lv3" id="toc-facility-dome"><a href="#facility-dome"><span class="toc-num">6.1.1.</span><span class="toc-text"> 돔</span></a></li>
+<li class="lv3" id="toc-facility-zone"><a href="#facility-zone"><span class="toc-num">6.1.2.</span><span class="toc-text"> 구역 구분</span></a></li>
+<li class="lv2" id="toc-facility-edu"><a href="#facility-edu"><span class="toc-num">6.2.</span><span class="toc-text"> 교육 및 행정 시설</span></a></li>
+<li class="lv3" id="toc-facility-admin"><a href="#facility-admin"><span class="toc-num">6.2.1.</span><span class="toc-text"> 환생행정관</span></a></li>
+<li class="lv3" id="toc-facility-library"><a href="#facility-library"><span class="toc-num">6.2.2.</span><span class="toc-text"> 도서관</span></a></li>
+<li class="lv3" id="toc-facility-hall"><a href="#facility-hall"><span class="toc-num">6.2.3.</span><span class="toc-text"> 강당</span></a></li>
+<li class="lv3" id="toc-facility-gym"><a href="#facility-gym"><span class="toc-num">6.2.4.</span><span class="toc-text"> 체육관</span></a></li>
+<li class="lv2" id="toc-facility-record"><a href="#facility-record"><span class="toc-num">6.3.</span><span class="toc-text"> 기록 시설</span></a></li>
+<li class="lv3" id="toc-facility-register"><a href="#facility-register"><span class="toc-num">6.3.1.</span><span class="toc-text"> 명부기록관</span></a></li>
+<li class="lv3" id="toc-facility-student-record"><a href="#facility-student-record"><span class="toc-num">6.3.2.</span><span class="toc-text"> 학생자료 기록실</span></a></li>
+<li class="lv3" id="toc-facility-judgement"><a href="#facility-judgement"><span class="toc-num">6.3.3.</span><span class="toc-text"> 심사기록실</span></a></li>
+<li class="lv2" id="toc-facility-life"><a href="#facility-life"><span class="toc-num">6.4.</span><span class="toc-text"> 생활 및 편의 시설</span></a></li>
+<li class="lv3" id="toc-facility-dorm"><a href="#facility-dorm"><span class="toc-num">6.4.1.</span><span class="toc-text"> 생활관</span></a></li>
+<li class="lv3" id="toc-facility-cafeteria"><a href="#facility-cafeteria"><span class="toc-num">6.4.2.</span><span class="toc-text"> 학생식당</span></a></li>
+<li class="lv3" id="toc-facility-store"><a href="#facility-store"><span class="toc-num">6.4.3.</span><span class="toc-text"> 매점</span></a></li>
+<li class="lv3" id="toc-facility-goods"><a href="#facility-goods"><span class="toc-num">6.4.4.</span><span class="toc-text"> 기념품샵</span></a></li>
+<li class="lv2" id="toc-facility-support"><a href="#facility-support"><span class="toc-num">6.5.</span><span class="toc-text"> 상담 및 지원 시설</span></a></li>
+<li class="lv3" id="toc-facility-counsel"><a href="#facility-counsel"><span class="toc-num">6.5.1.</span><span class="toc-text"> 상담지원센터</span></a></li>
+<li class="lv2" id="toc-facility-outdoor"><a href="#facility-outdoor"><span class="toc-num">6.6.</span><span class="toc-text"> 야외 및 외곽 시설</span></a></li>
+<li class="lv3" id="toc-facility-courtyard"><a href="#facility-courtyard"><span class="toc-num">6.6.1.</span><span class="toc-text"> 중정</span></a></li>
+<li class="lv3" id="toc-facility-hill"><a href="#facility-hill"><span class="toc-num">6.6.2.</span><span class="toc-text"> 유계정</span></a></li>
+<li class="lv3" id="toc-facility-maintenance"><a href="#facility-maintenance"><span class="toc-num">6.6.3.</span><span class="toc-text"> 돔 정비구역</span></a></li>
+<li class="lv2" id="toc-facility-limited"><a href="#facility-limited"><span class="toc-num">6.7.</span><span class="toc-text"> 제한 시설</span></a></li>
+<li class="lv3" id="toc-facility-chasa"><a href="#facility-chasa"><span class="toc-num">6.7.1.</span><span class="toc-text"> 차사연수동</span></a></li>
+<li class="lv1" id="toc-systems"><a href="#systems"><span class="toc-num">7.</span><span class="toc-text"> 원내 시스템</span></a></li>
+<li class="lv2" id="toc-system-id"><a href="#system-id"><span class="toc-num">7.1.</span><span class="toc-text"> 원생 전용 명패</span></a></li>
+<li class="lv2" id="toc-system-point"><a href="#system-point"><span class="toc-num">7.2.</span><span class="toc-text"> 포인트와 상품권</span></a></li>
+<li class="lv2" id="toc-system-campus"><a href="#system-campus"><span class="toc-num">7.3.</span><span class="toc-text"> 사이버 캠퍼스</span></a></li>
+<li class="lv2" id="toc-system-ai"><a href="#system-ai"><span class="toc-num">7.4.</span><span class="toc-text"> 까돌이 AI</span></a></li>
+<li class="lv1" id="toc-life"><a href="#life"><span class="toc-num">8.</span><span class="toc-text"> 생활</span></a></li>
+<li class="lv2" id="toc-life-day"><a href="#life-day"><span class="toc-num">8.1.</span><span class="toc-text"> 일과</span></a></li>
+<li class="lv2" id="toc-life-dorm"><a href="#life-dorm"><span class="toc-num">8.2.</span><span class="toc-text"> 기숙사 생활</span></a></li>
+<li class="lv2" id="toc-life-culture"><a href="#life-culture"><span class="toc-num">8.3.</span><span class="toc-text"> 원생 문화</span></a></li>
+<li class="lv2" id="toc-life-groups"><a href="#life-groups"><span class="toc-num">8.4.</span><span class="toc-text"> 비공식 모임</span></a></li>
+<li class="lv1" id="toc-operation"><a href="#operation"><span class="toc-num">9.</span><span class="toc-text"> 운영</span></a></li>
+<li class="lv2" id="toc-operation-org"><a href="#operation-org"><span class="toc-num">9.1.</span><span class="toc-text"> 조직</span></a></li>
+<li class="lv2" id="toc-operation-chasa"><a href="#operation-chasa"><span class="toc-num">9.2.</span><span class="toc-text"> 차사</span></a></li>
+<li class="lv2" id="toc-operation-record"><a href="#operation-record"><span class="toc-num">9.3.</span><span class="toc-text"> 기록 관리</span></a></li>
+<li class="lv2" id="toc-operation-eval"><a href="#operation-eval"><span class="toc-num">9.4.</span><span class="toc-text"> 평가기간 운영</span></a></li>
+<li class="lv1" id="toc-rumors"><a href="#rumors"><span class="toc-num">10.</span><span class="toc-text"> 여담</span></a></li>
+<li class="lv1" id="toc-etc"><a href="#etc"><span class="toc-num">11.</span><span class="toc-text"> 기타</span></a></li>
 </ol>
 </nav>
 <aside class="infobox">
 <div class="infobox-title"><div class="ko">청년환생교육원</div><div class="hanja">靑年還生敎育院</div><div class="en">Youth Rebirth Education Institute</div></div>
 <table class="info-table">
-<tr><th>설립</th><td>이승시(現世時) 기준 2014년경</td></tr>
+<tr class="emblem-row"><td colspan="2"><div class="emblem-cell"><img alt="청년환생교육원 교표" src="assets/emblem.png"/></div></td></tr><tr><th>설립</th><td>이승시(現世時) 기준 2014년경</td></tr>
 <tr><th>유형</th><td>저승환생공단 산하 교육·심사 기관</td></tr>
 <tr><th>형태</th><td>기숙형 재교육 기관</td></tr>
 <tr><th>대상</th><td><a class="wiki-link" href="https://namu.wiki/w/%EC%84%B1%EC%9D%B8" rel="noopener noreferrer" target="_blank">사망 당시 기준 만 18세 이상 29세 이하</a> 청년 혼령</td></tr>
@@ -3478,11 +3670,11 @@ table {
 <p>환생원은 전원이 죽은 자라는 특수한 조건을 제외하면, 의외로 학교 같은 문화가 많다. 원생들은 과제에 시달리고, 매점 인기 메뉴에 집착하며, 생활관 라운지에서 시간을 보내고, 사이버 캠퍼스 익명 게시판에서 시답잖은 이야기를 나누기도 한다.</p>
 <p>다만 모든 문화의 밑바탕에는 환생 적합도 평가가 깔려 있다. 평범한 농담이나 소모임도 평가기간이 가까워지면 정보 교환, 견제, 동맹 관계로 변질되는 경우가 있다.</p>
 <p>생전의 기억과 사망 경위가 원생마다 다르기 때문에, 서로의 과거를 묻는 일은 조심스러운 편이다. 친해진 뒤에도 사망 원인이나 생전 가족 관계를 직접적으로 묻는 것은 실례로 여겨진다. 물론 친한 사이에서는 결국 다 말하게 되는 경우도 많다.</p>
-<h3 class="subsection-toggle" id="life-groups" tabindex="0"><span aria-hidden="true" class="sub-fold-arrow outline-arrow"></span><a class="num heading-num-link" href="#toc-life-groups">8.4.</a>비공식 모임</h3>
-<p>환생원에는 <strong>공식 학생회가 존재하지 않는다</strong>. <strong>학생 간 서열이나 대표 권한이 과도하게 형성되는 것을 방지하기 위한 조치</strong>로 알려져 있다. 다만 원생들이 오랜 기간 기숙 생활을 하는 만큼, 비공식적인 모임이나 느슨한 파벌은 자연스럽게 생기는 편이다.</p>
-<p>환생 스터디는 최종 환생에 목적을 가진 열정 있는 학생들의 모임이다. 주로 함께 수업 내용의 예습과 복습, 평가기간에 대한 정보를 공유하며 좋은 영향을 주고받기 위한 취지이다. 그러나 평가기간이 가까워지면 분위기가 꽤 예민해져, 단순 정보 공유와 견제의 경계가 흐려지기도 한다.</p>
-<p>냉도향차회는 학생식당 2층이나 매점 근처에서 냉도향차를 사 들고 모이는 원생들을 가리키는 말이다. 처음에는 단순한 친목 모임에 가까웠으나, 시간이 지나며 원내 소문이 빠르게 오가는 자리로 인식되었다. 이름이 가벼운 것에 비해 의외로 민감한 이야기가 오간다고 한다. 현재는 익게에 교내에서 도는 소문에 대한 정보 공유를 할 때 쓰이는 은어로도 사용된다. <span class="strike-text">냉도향차회 ㄱ? ㄴㄷㅎㅊ 모집. 복숭아 하자. 복숭아 먹자. 등 다양한 변형이 있다…</span></p>
-<p>재이수생 테이블은 평가기간을 한 번 이상 경험한 재이수생들이 주로 앉는 학생식당 2층의 특정 자리에서 유래한 표현이다. 실제로 고정 좌석이 지정된 것은 아니지만, 원생들 사이에서는 어느 정도 통용되는 말이다. 현재는 재이수생이 모여있거나, 재이수생 자체를 통칭하기 위한 호칭으로 사용되기도 하며, 경우에 따라 그들을 조롱하기 위한 멸칭으로 사용되기도 한다. <span class="strike-text">사실상 대부분이 후자의 의미로 사용되는 경우가 많다.</span></p>
+<h3 class="subsection-toggle" id="life-groups" tabindex="0"><span aria-hidden="true" class="sub-fold-arrow outline-arrow"></span><a class="num heading-num-link" href="#toc-life-groups">8.4.</a>비공식 모임</h3><p>환생원에는 공식적으로 인정된 동아리나 자치회가 많지 않다. 다만 원생들 사이에서는 성향과 목적에 따라 자연스럽게 형성된 비공식 모임이 존재한다.</p><ul class="content-list group-list"><li><strong>환생 스터디</strong>: 최종 환생에 목적을 가진 열정 있는 학생들의 모임이다. 주로 함께 수업 내용의 예습과 복습, 평가기간에 대한 정보를 공유하며 좋은 영향을 주고받기 위한 취지이다. 그러나 평가기간이 가까워지면 분위기가 꽤 예민해져, 단순 정보 공유와 견제의 경계가 흐려지기도 한다.</li><li><strong>냉도향차회</strong>: 학생식당 2층이나 매점 근처에서 냉도향차를 사 들고 모이는 원생들을 가리키는 말이다. 처음에는 단순한 친목 모임에 가까웠으나, 시간이 지나며 원내 소문이 빠르게 오가는 자리로 인식되었다. 이름이 가벼운 것에 비해 의외로 민감한 이야기가 오간다고 한다. 현재는 익게에 교내에서 도는 소문에 대한 정보 공유를 할 때 쓰이는 은어로도 사용된다. <span class="strike-text">냉도향차회 ㄱ? ㄴㄷㅎㅊ 모집. 복숭아 하자. 복숭아 먹자. 등 다양한 변형이 있다…</span></li><li><strong>재이수생 테이블</strong>: 평가기간을 한 번 이상 경험한 재이수생들이 주로 앉는 학생식당 2층의 특정 자리에서 유래한 표현이다. 실제로 고정 좌석이 지정된 것은 아니지만, 원생들 사이에서는 어느 정도 통용되는 말이다. 현재는 재이수생이 모여 있거나, 재이수생 자체를 통칭하기 위한 호칭으로 사용되기도 하며, 경우에 따라 그들을 조롱하기 위한 멸칭으로 사용되기도 한다. <span class="strike-text">사실상 대부분이 후자의 의미로 사용되는 경우가 많다.</span></li></ul>
+
+
+
+
 </div>
 </details>
 <details class="section-fold" id="operation" open="">
@@ -3644,6 +3836,43 @@ table {
   window.addEventListener('resize', function(){
     if (!shouldUseModal()) closeNote();
   });
+})();
+</script>
+<script>
+(function () {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  function forceTopOnce() {
+    if (location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('pageshow', forceTopOnce);
+  window.addEventListener('load', function () {
+    setTimeout(forceTopOnce, 0);
+  });
+})();
+</script>
+<script>
+(function () {
+  const nav = document.querySelector('.quick-nav');
+  const toc = document.getElementById('toc');
+  if (!nav || !toc) return;
+
+  function updateQuickNav() {
+    const rect = toc.getBoundingClientRect();
+    const passedToc = rect.bottom <= 0;
+    nav.classList.toggle('is-visible', passedToc);
+  }
+
+  window.addEventListener('scroll', updateQuickNav, { passive: true });
+  window.addEventListener('resize', updateQuickNav);
+  window.addEventListener('load', updateQuickNav);
+  updateQuickNav();
 })();
 </script>
 </body>
